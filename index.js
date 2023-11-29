@@ -27,7 +27,7 @@ app.use("/contact", contactRoutes);
 
 mongoose
   .connect(
-    "mongodb+srv://herby:fantasy8@cluster0.pyfdgkp.mongodb.net/?retryWrites=true&w=majority"
+    
   )
   .then(() => {
     console.log("Conectamos ao MongoDB!");
