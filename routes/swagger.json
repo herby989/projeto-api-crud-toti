@@ -1,0 +1,202 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de lista de contatos",
+        "description": "Essa API tem como objetivo a manipulação de contatos ",
+        "termsOfService": "http://localhost:3000/terms",
+        "contact": {
+            "email": "developer@toti.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "API de test"
+        }
+    ],
+    "paths": {
+        "/contact": {
+            "post": {
+                "summary": "Cadastrar um novo contato",
+                "description": "Cadastrar um novo contato",
+                "tags": [
+                    "Contacts"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Contact"
+                            },
+                            "examples": {
+                                "contact": {
+                                    "value": {
+                                        "name": "Jão Batista",
+                                        "email": "jaobatista@toti.com",
+                                        "telephone": 9999999
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "O nome e obrigatorio!"
+                    },
+                    "201": {
+                        "description": "Pessoa inserida no sistema com sucesso!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Contact"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "error"
+                    }
+                }
+            },
+            "get": {
+                "description": "Listar todos os contatos cadastrados",
+                "summary": "Listar todos os contatos cadastrados ",
+                "tags": [
+                    "Contacts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Contact"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contact/{id}": {
+            "get": {
+                "description": "Buscar um contato pelo id",
+                "summary": "Buscar um contato pelo id",
+                "tags": [
+                    "Contacts"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do contato",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Contact"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "Alterar um contato pelo id",
+                "summary": "Alterar um contato pelo id",
+                "tags": [
+                    "Contacts"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do contato a ser atualizado",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Contact"
+                            },
+                            "examples": {
+                                "contact": {
+                                    "value": {
+                                        "name": "Joana Lima",
+                                        "email": "joanalima@toti.com",
+                                        "telephone": 900000000
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Contact"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Apagar um contato pelo id",
+                "summary": "Apagar um contato pelo id",
+                "tags": [
+                    "Contacts"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do contato a ser excluido",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contato removido com sucesso!"
+                    },
+                    "422": {
+                        "description": "O contato nao foi encontrado!"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Contact": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "telephone": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    }
+}
