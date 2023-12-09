@@ -5,7 +5,7 @@ const Contact = require("../models/contact");
 // create - criacao de dados
 router.post("/", async (req, res) => {
   //req.body
-  const { name, email, telephone } = req.body;
+  const { name, email, telephone, address, company, status, } = req.body;
 
   if (!name) {
     res.status(422).json({ error: "O nome e obrigatorio!" });
@@ -13,9 +13,12 @@ router.post("/", async (req, res) => {
   }
 
   const contact = {
-    name,
-    email,
-    telephone,
+    name, 
+    email, 
+    telephone, 
+    address, 
+    company, 
+    status,
   };
 
   try {
@@ -60,12 +63,15 @@ router.get("/:id", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   const id = req.params.id;
 
-  const { name, email, telephone } = req.body;
+  const { name, email, telephone, address, company, status, } = req.body;
 
   const contact = {
-    name,
-    email,
-    telephone,
+    name, 
+    email, 
+    telephone, 
+    address, 
+    company, 
+    status,
   };
 
   try {

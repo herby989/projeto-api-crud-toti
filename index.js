@@ -26,7 +26,7 @@ const contactRoutes = require("./routes/contactRoutes");
 
 app.use("/contact", contactRoutes);
 
-
+ 
 // entregar uma porta
 
 const DB_USER = process.env.DB_USER
@@ -40,6 +40,12 @@ mongoose
     console.log("Conectamos ao MongoDB!");
   })
   .catch((err) => console.log(err));
+
+app.get('/', (req,res) => {
+
+  res.json({ message: 'Olá Mundo!!'})
+
+})  
 
 app.listen(3000, () => {
   console.log("Servidor está rodando na porta 3000");

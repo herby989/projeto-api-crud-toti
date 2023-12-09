@@ -32,9 +32,12 @@
                             "examples": {
                                 "contact": {
                                     "value": {
-                                        "name": "Jão Batista",
-                                        "email": "jaobatista@toti.com",
-                                        "telephone": 9999999
+                                        "name": "Raquel",
+                                        "email": "raquel@gmail.com",
+                                        "telephone": 90000678901,
+                                        "address": "Rua General Tomate",
+                                        "company": "Accenture",
+                                        "status": true
                                     }
                                 }
                             }
@@ -134,9 +137,12 @@
                             "examples": {
                                 "contact": {
                                     "value": {
-                                        "name": "Joana Lima",
-                                        "email": "joanalima@toti.com",
-                                        "telephone": 900000000
+                                        "name": "Raquel",
+                                        "email": "raquel@gmail.com",
+                                        "telephone": 90000678901,
+                                        "address": "Rua General Tomate",
+                                        "company": "Accenture",
+                                        "status": true
                                     }
                                 }
                             }
@@ -194,9 +200,18 @@
                     },
                     "telephone": {
                         "type": "number"
+                    },
+                    "address":  {
+                        "type": "string"
+                    },
+                    "company":  {
+                        "type": "string"
+                    },
+                    "status":   {
+                        "type": "object"
+                    }
                     }
                 }
             }
         }
     }
-}
