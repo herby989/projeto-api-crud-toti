@@ -8,9 +8,26 @@ router.post("/", async (req, res) => {
   const { name, email, telephone, address, company, status, } = req.body;
 
   if (!name) {
-    res.status(422).json({ error: "O nome e obrigatorio!" });
+    res.status(422).json({ error: "O nome é obrigatorio!" });
     return;
   }
+  if (!email) {
+    res.status(422).json({ error: "Deve preencher o campo da email!"});
+    return;
+  }
+  if (!telephone) {
+    res.status(422).json({ error: "Deve telefone o campo da companhia!"});
+    return;
+  }
+  if (!address) {
+    res.status(422).json({ error: "Deve preencher o campo do endereço!"});
+    return;
+  }
+  if (!company) {
+    res.status(422).json({ error: "Deve preencher o campo da companhia!"});
+    return;
+  }
+
 
   const contact = {
     name, 
@@ -79,7 +96,7 @@ router.patch("/:id", async (req, res) => {
 
     res.status(200).json(contact);
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json({ message:  "O contato nao foi encontrado!"});
   }
 });
 
